@@ -1,0 +1,427 @@
+<div class="email-notification min-h-screen bg-gray-50 pb-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header Section -->
+    <div class="mb-6 sm:mb-8">
+      <div class="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex-1 min-w-0">
+          <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 truncate">Email Notifications</h1>
+          <p class="mt-1 sm:mt-2 text-sm text-gray-600">
+            Manage email addresses for system notifications and send test emails.
+          </p>
+        </div>
+        <div class="flex flex-col space-y-2 sm:space-y-0 sm:flex-row sm:space-x-3 sm:mt-0">
+          <button
+            (click)="refreshEmails()"
+            [disabled]="isLoading()"
+            class="w-full sm:w-auto inline-flex items-center justify-center px-3 sm:px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <svg class="w-4 h-4 mr-2 flex-shrink-0" [class.animate-spin]="isLoading()" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+            <span class="hidden xs:inline">{{ isLoading() ? 'Refreshing...' : 'Refresh' }}</span>
+            <span class="xs:hidden">{{ isLoading() ? '...' : 'Refresh' }}</span>
+          </button>
+          <button
+            (click)="openTestEmailModal()"
+            class="w-full sm:w-auto inline-flex items-center justify-center px-3 sm:px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
+          >
+            <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            <span class="hidden xs:inline">Send Test Email</span>
+            <span class="xs:hidden">Test Email</span>
+          </button>
+          <button
+            (click)="openAddEmailModal()"
+            class="w-full sm:w-auto inline-flex items-center justify-center px-3 sm:px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200"
+          >
+            <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+            <span class="hidden xs:inline">Add Email</span>
+            <span class="xs:hidden">Add</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="stats-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
+      <div class="stats-card bg-white overflow-hidden shadow rounded-lg">
+        <div class="p-4 sm:p-5">
+          <div class="flex items-center">
+            <div class="flex-shrink-0">
+              <svg class="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <div class="ml-3 sm:ml-5 w-0 flex-1 min-w-0">
+              <dl>
+                <dt class="text-xs sm:text-sm font-medium text-gray-500 truncate">Total Emails</dt>
+                <dd class="text-base sm:text-lg font-medium text-gray-900">{{ emails().length }}</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-card bg-white overflow-hidden shadow rounded-lg">
+        <div class="p-4 sm:p-5">
+          <div class="flex items-center">
+            <div class="flex-shrink-0">
+              <svg class="h-5 w-5 sm:h-6 sm:w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div class="ml-3 sm:ml-5 w-0 flex-1 min-w-0">
+              <dl>
+                <dt class="text-xs sm:text-sm font-medium text-gray-500 truncate">Active Notifications</dt>
+                <dd class="text-base sm:text-lg font-medium text-gray-900">{{ emails().length > 0 ? 'Enabled' : 'Disabled' }}</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-card bg-white overflow-hidden shadow rounded-lg sm:col-span-2 lg:col-span-1">
+        <div class="p-4 sm:p-5">
+          <div class="flex items-center">
+            <div class="flex-shrink-0">
+              <svg class="h-5 w-5 sm:h-6 sm:w-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div class="ml-3 sm:ml-5 w-0 flex-1 min-w-0">
+              <dl>
+                <dt class="text-xs sm:text-sm font-medium text-gray-500 truncate">Last Updated</dt>
+                <dd class="text-base sm:text-lg font-medium text-gray-900 truncate">
+                  {{ emails().length > 0 ? (emails()[0].createdAt | date:'short') : 'Never' }}
+                </dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email List Table -->
+    <div class="bg-white shadow overflow-hidden sm:rounded-md">
+      <div class="px-4 py-4 sm:py-5 sm:px-6 border-b border-gray-200">
+        <h3 class="text-base sm:text-lg leading-6 font-medium text-gray-900">Email Addresses</h3>
+        <p class="mt-1 text-sm text-gray-500">
+          List of email addresses that will receive system notifications.
+        </p>
+      </div>
+
+      @if (isLoading()) {
+        <div class="flex flex-col sm:flex-row justify-center items-center py-8 sm:py-12">
+          <div class="animate-spin rounded-full h-6 w-6 sm:h-8 sm:w-8 border-b-2 border-blue-600"></div>
+          <span class="ml-2 sm:ml-3 text-sm sm:text-base text-gray-600">Loading emails...</span>
+        </div>
+      } @else if (emails().length === 0) {
+        <div class="text-center py-8 sm:py-12 px-4">
+          <svg class="mx-auto h-10 w-10 sm:h-12 sm:w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>
+          <h3 class="mt-2 text-sm sm:text-base font-medium text-gray-900">No email addresses</h3>
+          <p class="mt-1 text-xs sm:text-sm text-gray-500">Get started by adding an email address for notifications.</p>
+          <div class="mt-4 sm:mt-6">
+            <button
+              (click)="openAddEmailModal()"
+              class="w-full sm:w-auto inline-flex items-center justify-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            >
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+              </svg>
+              Add Email Address
+            </button>
+          </div>
+        </div>
+      } @else {
+        <ul class="divide-y divide-gray-200">
+          @for (email of emails(); track email.id) {
+            <li class="email-item px-4 py-4 sm:px-6">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0">
+                <div class="flex items-center min-w-0 flex-1">
+                  <div class="flex-shrink-0">
+                    <div class="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                      <svg class="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="ml-3 min-w-0 flex-1">
+                    <div class="text-sm font-medium text-gray-900 truncate">{{ email.email }}</div>
+                    <div class="text-xs sm:text-sm text-gray-500 truncate">
+                      Added {{ email.createdAt | date:'medium' }}
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end space-x-2">
+                  <span class="status-badge inline-flex items-center px-2 py-1 sm:px-2.5 sm:py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                    Active
+                  </span>
+                  <button
+                    (click)="deleteEmail(email.email)"
+                    [disabled]="isDeleting() === email.email"
+                    class="inline-flex items-center px-2 py-1.5 sm:px-3 sm:py-1.5 border border-transparent text-xs font-medium rounded text-red-700 bg-red-100 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+                  >
+                    @if (isDeleting() === email.email) {
+                      <svg class="animate-spin -ml-1 mr-1 h-3 w-3 text-red-600" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      <span class="hidden sm:inline">Deleting...</span>
+                      <span class="sm:hidden">...</span>
+                    } @else {
+                      <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                      </svg>
+                      <span class="hidden sm:inline">Delete</span>
+                    }
+                  </button>
+                </div>
+              </div>
+            </li>
+          }
+        </ul>
+      }
+    </div>
+  </div>
+
+  <!-- Add Email Modal -->
+  @if (isModalOpen()) {
+    <div class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+      <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <!-- Background overlay -->
+        <div class="modal-backdrop fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" (click)="closeAddEmailModal()"></div>
+
+        <!-- Modal panel -->
+        <div class="modal-panel inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full mx-4 sm:mx-0">
+          <form [formGroup]="emailForm" (ngSubmit)="addEmail()">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <div class="sm:flex sm:items-start">
+                <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10">
+                  <svg class="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                  </svg>
+                </div>
+                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                  <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+                    Add Email Address
+                  </h3>
+                  <div class="mt-4">
+                    <p class="text-sm text-gray-500">
+                      Add a new email address to receive system notifications.
+                    </p>
+                  </div>
+                  <div class="mt-6">
+                    <label for="email" class="block text-sm font-semibold text-gray-900 mb-3">
+                      Email Address
+                      <span class="text-red-500 ml-1">*</span>
+                    </label>
+                    <div class="relative group">
+                      <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors duration-200">
+                        <svg class="h-5 w-5 text-gray-400 group-focus-within:text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path>
+                        </svg>
+                      </div>
+                      <input
+                        type="email"
+                        id="email"
+                        formControlName="email"
+                        class="block w-full pl-12 pr-4 py-4 border-2 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-300 text-base bg-white hover:border-gray-400 hover:shadow-md"
+                        [class]="isFieldInvalid(emailForm, 'email') ? 'border-red-300 focus:ring-red-100 focus:border-red-500 bg-red-50' : 'border-gray-200 focus:ring-blue-100 focus:border-blue-500'"
+                        placeholder="Enter email address (e.g., admin@example.com)"
+                        autocomplete="email"
+                      >
+                      <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
+                        @if (emailForm.get('email')?.valid && emailForm.get('email')?.touched) {
+                          <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                          </svg>
+                        }
+                      </div>
+                    </div>
+                    @if (isFieldInvalid(emailForm, 'email')) {
+                      <div class="mt-3 flex items-start space-x-2 animate-fade-in">
+                        <svg class="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <p class="text-sm text-red-600 font-medium leading-relaxed">{{ getFieldError(emailForm, 'email') }}</p>
+                      </div>
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-gray-50 px-4 py-4 sm:px-6 sm:py-4 sm:flex sm:flex-row-reverse space-y-3 sm:space-y-0">
+              <button
+                type="submit"
+                [disabled]="isLoading()"
+                class="w-full inline-flex justify-center items-center rounded-xl border border-transparent shadow-lg px-4 py-3 sm:px-6 bg-gradient-to-r from-blue-600 to-blue-700 text-sm sm:text-base font-semibold text-white hover:from-blue-700 hover:to-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:ring-offset-2 transition-all duration-300 sm:ml-3 sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
+              >
+                @if (isLoading()) {
+                  <svg class="animate-spin -ml-1 mr-2 h-4 w-4 sm:h-5 sm:w-5 text-white" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Adding...
+                } @else {
+                  <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                  </svg>
+                  Add Email
+                }
+              </button>
+              <button
+                type="button"
+                (click)="closeAddEmailModal()"
+                class="w-full inline-flex justify-center items-center rounded-xl border-2 border-gray-300 shadow-sm px-4 py-3 sm:px-6 bg-white text-sm sm:text-base font-semibold text-gray-700 hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-100 focus:ring-offset-2 transition-all duration-300 sm:mt-0 sm:ml-3 sm:w-auto"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- Test Email Modal -->
+  @if (isTestModalOpen()) {
+    <div class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="test-modal-title" role="dialog" aria-modal="true">
+      <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <!-- Background overlay -->
+        <div class="modal-backdrop fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" (click)="closeTestEmailModal()"></div>
+
+        <!-- Modal panel -->
+        <div class="modal-panel inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full mx-4 sm:mx-0">
+          <form [formGroup]="testEmailForm" (ngSubmit)="sendTestEmail()">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <div class="sm:flex sm:items-start">
+                <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 sm:mx-0 sm:h-10 sm:w-10">
+                  <svg class="h-6 w-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  </svg>
+                </div>
+                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                  <h3 class="text-lg leading-6 font-medium text-gray-900" id="test-modal-title">
+                    Send Test Email
+                  </h3>
+                  <div class="mt-4">
+                    <p class="text-sm text-gray-500">
+                      Send a test notification to all registered email addresses.
+                    </p>
+                  </div>
+                  <div class="mt-6 space-y-6">
+                    <div>
+                      <label for="subject" class="block text-sm font-semibold text-gray-900 mb-3">
+                        Subject
+                        <span class="text-red-500 ml-1">*</span>
+                      </label>
+                      <div class="relative group">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors duration-200">
+                          <svg class="h-5 w-5 text-gray-400 group-focus-within:text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                          </svg>
+                        </div>
+                        <input
+                          type="text"
+                          id="subject"
+                          formControlName="subject"
+                          class="block w-full pl-12 pr-4 py-4 border-2 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-300 text-base bg-white hover:border-gray-400 hover:shadow-md"
+                          [class]="isFieldInvalid(testEmailForm, 'subject') ? 'border-red-300 focus:ring-red-100 focus:border-red-500 bg-red-50' : 'border-gray-200 focus:ring-blue-100 focus:border-blue-500'"
+                          placeholder="Enter email subject (e.g., System Alert)"
+                          autocomplete="off"
+                        >
+                        <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
+                          @if (testEmailForm.get('subject')?.valid && testEmailForm.get('subject')?.touched) {
+                            <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                          }
+                        </div>
+                      </div>
+                      @if (isFieldInvalid(testEmailForm, 'subject')) {
+                        <div class="mt-3 flex items-start space-x-2 animate-fade-in">
+                          <svg class="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                          </svg>
+                          <p class="text-sm text-red-600 font-medium leading-relaxed">{{ getFieldError(testEmailForm, 'subject') }}</p>
+                        </div>
+                      }
+                    </div>
+                    <div>
+                      <label for="message" class="block text-sm font-semibold text-gray-900 mb-3">
+                        Message
+                        <span class="text-red-500 ml-1">*</span>
+                      </label>
+                      <div class="relative group">
+                        <div class="absolute top-4 left-4 pointer-events-none transition-colors duration-200">
+                          <svg class="h-5 w-5 text-gray-400 group-focus-within:text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                          </svg>
+                        </div>
+                        <textarea
+                          id="message"
+                          formControlName="message"
+                          rows="5"
+                          class="block w-full pl-12 pr-4 py-4 border-2 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-300 text-base bg-white hover:border-gray-400 hover:shadow-md resize-none"
+                          [class]="isFieldInvalid(testEmailForm, 'message') ? 'border-red-300 focus:ring-red-100 focus:border-red-500 bg-red-50' : 'border-gray-200 focus:ring-blue-100 focus:border-blue-500'"
+                          placeholder="Enter your notification message here..."
+                        ></textarea>
+                        <div class="absolute bottom-4 right-4 pointer-events-none">
+                          @if (testEmailForm.get('message')?.valid && testEmailForm.get('message')?.touched) {
+                            <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                          }
+                        </div>
+                      </div>
+                      @if (isFieldInvalid(testEmailForm, 'message')) {
+                        <div class="mt-3 flex items-start space-x-2 animate-fade-in">
+                          <svg class="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                          </svg>
+                          <p class="text-sm text-red-600 font-medium leading-relaxed">{{ getFieldError(testEmailForm, 'message') }}</p>
+                        </div>
+                      }
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-gray-50 px-4 py-4 sm:px-6 sm:py-4 sm:flex sm:flex-row-reverse space-y-3 sm:space-y-0">
+              <button
+                type="submit"
+                [disabled]="isLoading()"
+                class="w-full inline-flex justify-center items-center rounded-xl border border-transparent shadow-lg px-4 py-3 sm:px-6 bg-gradient-to-r from-yellow-500 to-orange-500 text-sm sm:text-base font-semibold text-white hover:from-yellow-600 hover:to-orange-600 focus:outline-none focus:ring-4 focus:ring-yellow-100 focus:ring-offset-2 transition-all duration-300 sm:ml-3 sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
+              >
+                @if (isLoading()) {
+                  <svg class="animate-spin -ml-1 mr-2 h-4 w-4 sm:h-5 sm:w-5 text-white" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Sending...
+                } @else {
+                  <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  </svg>
+                  Send Test Email
+                }
+              </button>
+              <button
+                type="button"
+                (click)="closeTestEmailModal()"
+                class="w-full inline-flex justify-center items-center rounded-xl border-2 border-gray-300 shadow-sm px-4 py-3 sm:px-6 bg-white text-sm sm:text-base font-semibold text-gray-700 hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-100 focus:ring-offset-2 transition-all duration-300 sm:mt-0 sm:ml-3 sm:w-auto"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  }
+</div>

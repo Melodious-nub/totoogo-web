@@ -1,0 +1,22 @@
+<!-- Dynamic Breadcrumb Component -->
+<app-breadcrumb pageTitle="team"></app-breadcrumb>
+
+<!-- Consultants Grid -->
+<section class="consultants">
+    <div class="container">
+        <app-team-data 
+        [showLoadMore]="true" 
+        [maxItems]="10" 
+        [showFilters]="true">
+        </app-team-data>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <h2 class="section-title">Can't find what you're looking for?</h2>
+        <p class="section-description">Contact us and we'll help you find the perfect consultant for your needs.</p>
+        <a type="button" routerLink="/contact" class="btn btn-primary btn-large">CONTACT US</a>
+    </div>
+</section>

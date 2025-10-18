@@ -1,0 +1,162 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ApiService {
+  private readonly http = inject(HttpClient);
+  private readonly baseUrl = environment.apiUrl;
+
+  // Auth endpoints
+  login(data: { email: string; password: string }): Observable<any> {
+    return this.http.post(`${this.baseUrl}/auth/login`, data);
+  }
+
+  me(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/auth/me`);
+  }
+
+  updateProfile(data: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/auth/profile`, data);
+  }
+
+  contactUs(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/contact`, data);
+  }
+
+  // admin endpoints
+  // contact responses management
+  getAllContactResponses(page: number = 1, pageSize: number = 20): Observable<any> {
+    return this.http.get(`${this.baseUrl}/contact?page=${page}&pageSize=${pageSize}`);
+  }
+
+  // email notification management
+  addEmailForNotification(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/notifications/emails`, data);
+  }
+
+  getAllEmailsForNotification(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/notifications/emails`);
+  }
+
+  deleteEmailForNotification(email: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/notifications/emails/${email}`);
+  }
+
+  testEmailNotification(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/notifications/send`, data);
+  }
+
+  // team management
+  createTeamMember(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/teams`, data);
+  }
+
+  updateTeamMember(id: string, data: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/teams/${id}`, data);
+  }
+
+  deleteTeamMember(id: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/teams/${id}`);
+  }
+
+  getTeamMembers(params?: any): Observable<any> {
+    let url = `${this.baseUrl}/teams`;
+    if (params) {
+      const queryParams = new URLSearchParams();
+      Object.keys(params).forEach(key => {
+        if (params[key] !== null && params[key] !== undefined && params[key] !== '') {
+          queryParams.append(key, params[key]);
+        }
+      });
+      const queryString = queryParams.toString();
+      if (queryString) {
+        url += `?${queryString}`;
+      }
+    }
+    return this.http.get(url);
+  }
+
+  // public endpoints
+  getPublicTeamMembers(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/teams/public/active`);
+  }
+
+  // community management
+  createCommunity(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/consultant-community/submit`, data);
+  }
+
+  // consultants request management
+  createConsultantsRequest(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/consultants`, data);
+  }
+
+  // Admin endpoints for community and consultant requests
+  getAllCommunityMembers(page: number = 1, pageSize: number = 20): Observable<any> {
+    return this.http.get(`${this.baseUrl}/consultant-community/admin?page=${page}&pageSize=${pageSize}`);
+  }
+
+  getAllConsultantRequests(page: number = 1, pageSize: number = 20): Observable<any> {
+    return this.http.get(`${this.baseUrl}/consultants?page=${page}&pageSize=${pageSize}`);
+  }
+
+  // about us management
+  getAboutUs(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/about-us`);
+  }
+
+  postAboutUs(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/about-us`, data);
+  }
+
+  getPublicAboutUs(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/about-us/public`);
+  }
+
+  // why choose us management
+  createWhyChooseUs(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/why-choose-us`, data);
+  }
+
+  updateWhyChooseUs(id: string, data: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/why-choose-us/${id}`, data);
+  }
+
+  deleteWhyChooseUs(id: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/why-choose-us/${id}`);
+  }
+
+  getAllWhyChooseUs(page: number = 1, pageSize: number = 20): Observable<any> {
+    return this.http.get(`${this.baseUrl}/why-choose-us?page=${page}&pageSize=${pageSize}`);
+  }
+
+  getPublicWhyChooseUs(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/why-choose-us/public/all`);
+  }
+
+  // testimonials management
+  createTestimonial(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/testimonials`, data);
+  }
+
+  updateTestimonial(id: string, data: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/testimonials/${id}`, data);
+  }
+
+  deleteTestimonial(id: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/testimonials/${id}`);
+  }
+
+  getAllTestimonials(page: number = 1, pageSize: number = 20): Observable<any> {
+    return this.http.get(`${this.baseUrl}/testimonials?page=${page}&pageSize=${pageSize}`);
+  }
+
+  getPublicTestimonials(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/testimonials/public/all`);
+  }
+
+}

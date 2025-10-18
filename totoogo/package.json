@@ -1,0 +1,41 @@
+{
+  "name": "totoogo-backend",
+  "version": "1.0.0",
+  "description": "Totoogo EV startup backend API for urban mobility solutions",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "setup": "node setup.js",
+    "init-db": "node scripts/init-db.js",
+    "test": "node test-api.js",
+    "test-swagger": "node test-swagger.js",
+    "test-db": "node test-db-connection.js",
+    "test-contact": "node test-contact-api.js",
+    "test-simple": "node test-simple-api.js",
+    "test-consultant": "node test-consultant-api.js",
+    "test-team": "node test-team-api.js"
+  },
+  "keywords": ["express", "mysql", "backend", "website-maintenance"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.6.5",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "dotenv": "^16.3.1",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "express-rate-limit": "^7.1.5",
+    "express-validator": "^7.0.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0",
+    "nodemailer": "^6.9.7",
+    "multer": "^1.4.5-lts.1",
+    "axios": "^1.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}

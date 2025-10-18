@@ -1,0 +1,148 @@
+// Battery Animation Styles
+.battery-animation-container {
+  position: relative;
+  width: 200px;
+  height: 300px;
+  margin: 0 auto;
+}
+
+.battery-main {
+  position: relative;
+  width: 120px;
+  height: 200px;
+  margin: 0 auto;
+  background: #e5e7eb;
+  border-radius: 8px;
+  border: 3px solid #374151;
+  overflow: hidden;
+}
+
+.battery-body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #f3f4f6, #e5e7eb);
+}
+
+.battery-level {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 75%;
+  background: linear-gradient(to top, #10b981, #34d399);
+  transition: height 0.5s ease-in-out;
+  border-radius: 0 0 4px 4px;
+}
+
+.battery-terminal {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 8px;
+  background: #374151;
+  border-radius: 2px;
+}
+
+// Floating Elements Animation
+.floating-element {
+  position: absolute;
+  animation: float 3s ease-in-out infinite;
+  opacity: 0.8;
+}
+
+.element-1 {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.element-2 {
+  top: 60%;
+  right: 15%;
+  animation-delay: 1s;
+}
+
+.element-3 {
+  bottom: 20%;
+  left: 20%;
+  animation-delay: 2s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+    opacity: 1;
+  }
+}
+
+// Battery Pulse Animation
+@keyframes battery-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+  }
+}
+
+.battery-main:hover {
+  animation: battery-pulse 2s infinite;
+}
+
+// Gradient Text Animation
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(-45deg, #10b981, #34d399, #6ee7b7, #10b981);
+  background-size: 400% 400%;
+  animation: gradient-shift 3s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Hover Effects
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .battery-animation-container {
+    width: 150px;
+    height: 200px;
+  }
+  
+  .battery-main {
+    width: 80px;
+    height: 150px;
+  }
+  
+  .floating-element {
+    display: none; // Hide on mobile for better performance
+  }
+}

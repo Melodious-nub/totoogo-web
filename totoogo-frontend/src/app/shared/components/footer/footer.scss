@@ -1,0 +1,19 @@
+// Footer styles are now handled by Tailwind CSS classes
+// This file can be used for any custom styles that can't be achieved with Tailwind
+
+// Custom hover effects for social icons
+.social-icon {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+// Gradient text effect for the brand name
+.brand-text {
+  background: linear-gradient(135deg, #10b981, #34d399);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

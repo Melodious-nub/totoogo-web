@@ -1,0 +1,31 @@
+<div class="contact-form">
+    <form class="project-form consultation-form" (ngSubmit)="onSubmit()" #consultationForm="ngForm" data-angular-form="true">
+        <div class="form-row">
+            <input 
+                type="text" 
+                placeholder="Name" 
+                name="name"
+                [(ngModel)]="formData.name"
+                required>
+            <input 
+                type="email" 
+                placeholder="Email" 
+                name="email"
+                [(ngModel)]="formData.email"
+                required>
+        </div>
+        <textarea 
+            placeholder="Brief project description" 
+            rows="4" 
+            name="description"
+            [(ngModel)]="formData.description"
+            required></textarea>
+        <button 
+            type="submit" 
+            class="btn btn-primary btn-large"
+            [disabled]="isSubmitting || !consultationForm.form.valid">
+            {{ isSubmitting ? 'SUBMITTING...' : 'REQUEST CONSULTATION' }}
+        </button>
+    </form>
+    <p class="contact-alternative">or email us at: <a href="mailto:info@totoogo.org">info@totoogo.org</a></p>
+</div>
