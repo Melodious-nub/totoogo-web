@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'https://api.totoogo.com/api'
+  apiUrl: 'https://dev.totoogo.com/backend/api'
 };

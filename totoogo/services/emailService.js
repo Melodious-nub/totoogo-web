@@ -20,8 +20,8 @@ class EmailService {
         port: parseInt(process.env.EMAIL_PORT) || 465,
         secure: process.env.EMAIL_SECURE === 'true', // Use TLS (false) or SSL (true)
         auth: {
-          user: process.env.EMAIL_USER || 'noreply.bbc2025@gmail.com',
-          pass: process.env.EMAIL_PASS || 'dffsijxzxmuoenil'
+          user: process.env.EMAIL_USER || 'no-reply@totoogo.com',
+          pass: process.env.EMAIL_PASS || 'P97M-!1iZ-}aFGz^'
         },
         tls: {
           rejectUnauthorized: true
