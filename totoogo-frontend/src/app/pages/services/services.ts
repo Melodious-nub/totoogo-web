@@ -22,16 +22,30 @@ export class Services implements OnInit, AfterViewInit {
     this.scrollAnimationService.initScrollAnimations();
     this.initializeAnimations();
     
-    // Ensure service cards are visible immediately
+    // Ensure service cards are visible immediately - multiple attempts
     setTimeout(() => {
       const serviceCards = document.querySelectorAll('.services-cards-container > div');
       serviceCards.forEach(card => {
         if (card instanceof HTMLElement) {
           card.style.opacity = '1';
           card.style.transform = 'translateY(0)';
+          card.style.visibility = 'visible';
+          card.classList.remove('fade-in-section');
         }
       });
-    }, 100);
+    }, 50);
+
+    // Second attempt for service cards
+    setTimeout(() => {
+      const serviceCards = document.querySelectorAll('.services-cards-container > div');
+      serviceCards.forEach(card => {
+        if (card instanceof HTMLElement) {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+          card.style.visibility = 'visible';
+        }
+      });
+    }, 200);
 
     // Ensure technology features are visible immediately
     setTimeout(() => {
@@ -40,6 +54,7 @@ export class Services implements OnInit, AfterViewInit {
         if (feature instanceof HTMLElement) {
           feature.style.opacity = '1';
           feature.style.transform = 'translateY(0)';
+          feature.style.visibility = 'visible';
         }
       });
     }, 100);

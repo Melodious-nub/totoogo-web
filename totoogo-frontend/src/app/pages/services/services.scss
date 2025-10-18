@@ -3,14 +3,23 @@
 
 // Service Cards - Ensure instant visibility
 .services-cards-container > div {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  visibility: visible !important;
 }
 
 // Technology Features - Ensure instant visibility
 .technology-features-container > div {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  visibility: visible !important;
+}
+
+// Override any fade-in-section styles
+.services-cards-container > div.fade-in-section {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  visibility: visible !important;
 }
 
 .hover-lift {
