@@ -20,20 +20,10 @@ export class ScrollToTopComponent implements OnInit, OnDestroy {
     this.routerSubscription = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
-        // Use multiple timeouts to ensure scroll works
+        // Use instant scroll for route changes to ensure pages start from top
         setTimeout(() => {
-          this.scrollToTop();
+          window.scrollTo(0, 0);
         }, 0);
-        
-        // Additional timeout for slower route changes
-        setTimeout(() => {
-          this.scrollToTop();
-        }, 100);
-        
-        // Final timeout for complex route changes
-        setTimeout(() => {
-          this.scrollToTop();
-        }, 300);
       });
   }
 
@@ -50,31 +40,28 @@ export class ScrollToTopComponent implements OnInit, OnDestroy {
   }
 
   scrollToTop(smooth: boolean = true): void {
-    // Multiple methods to ensure scroll to top works
+    // Always use smooth scrolling for better UX
     try {
-      if (smooth) {
-        // Method 1: Modern smooth scroll
-        window.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: 'smooth'
-        });
-      } else {
-        // Method 1: Instant scroll for button clicks
-        window.scrollTo(0, 0);
-      }
-      
-      // Method 2: Fallback for older browsers
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-      
-      // Method 3: Additional fallback
-      if (window.pageYOffset !== undefined) {
-        window.pageYOffset = 0;
-      }
+      // Method 1: Modern smooth scroll (preferred)
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
     } catch (error) {
-      // Method 4: Last resort - instant scroll
-      window.scrollTo(0, 0);
+      // Method 2: Fallback smooth scroll for older browsers
+      this.smoothScrollToTop();
     }
+  }
+
+  private smoothScrollToTop(): void {
+    const scrollStep = -window.scrollY / (500 / 15); // 500ms duration
+    const scrollInterval = setInterval(() => {
+      if (window.scrollY !== 0) {
+        window.scrollBy(0, scrollStep);
+      } else {
+        clearInterval(scrollInterval);
+      }
+    }, 15);
   }
 }

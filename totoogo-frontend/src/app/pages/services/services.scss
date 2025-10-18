@@ -1,6 +1,18 @@
 // Services page styles are handled by Tailwind CSS
 // Custom animations and effects can be added here
 
+// Service Cards - Ensure instant visibility
+.services-cards-container > div {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+// Technology Features - Ensure instant visibility
+.technology-features-container > div {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .hover-lift {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   

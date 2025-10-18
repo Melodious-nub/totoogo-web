@@ -20,19 +20,207 @@ body {
   // Set a default background, font and text colors for the application using
   // Angular Material's system-level CSS variables. Learn more about these
   // variables at https://material.angular.dev/guide/system-variables
-  background-color: var(--mat-sys-surface);
-  color: var(--mat-sys-on-surface);
+  background-color: #ffffff;
+  color: #1f2937;
   font: var(--mat-sys-body-medium);
 
   // Reset the user agent margin.
   margin: 0;
+  padding: 0;
 }
-/* Bootstrap theme customization with CSS custom properties */
-// @use 'bootstrap/scss/bootstrap';
 
 /* ===== FONT SETUP ===== */
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 400;
   line-height: 1.6;
+}
+
+// .main-content {
+//   min-height: 100vh;
+//   padding-top: 0;
+// }
+
+.btn-primary {
+  background: linear-gradient(to right, #22c55e, #16a34a);
+  color: white;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to right, #16a34a, #15803d);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: white;
+  color: #16a34a;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: 2px solid #22c55e;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+}
+
+.btn-secondary:hover {
+  background: #f0fdf4;
+  color: #15803d;
+  transform: translateY(-2px);
+}
+
+.btn-white-outline {
+  background: transparent;
+  color: white;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: 2px solid white;
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+.btn-white-outline:hover {
+  background: white;
+  color: #15803d;
+  transform: translateY(-2px);
+}
+
+.form-input {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+}
+
+.feature-card {
+  background: white;
+  padding: 32px;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feature-card:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.icon-wrapper {
+  padding: 16px;
+  border-radius: 50%;
+  margin-bottom: 16px;
+  font-size: 1.875rem;
+}
+
+.investor-highlight-card {
+  background: #16a34a;
+  padding: 32px;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.service-card {
+  background: white;
+  padding: 32px;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.service-card:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.value-card {
+  background: white;
+  padding: 32px;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.value-card:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+/* Battery Animation */
+.battery-animation-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.battery-main {
+  width: 150px;
+  height: 250px;
+  border: 8px solid #333;
+  border-radius: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow: hidden;
+  background-color: #f0f0f0;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.battery-terminal {
+  width: 50px;
+  height: 20px;
+  background-color: #333;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 5px 5px 0 0;
+}
+
+.battery-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.battery-level {
+  height: 100%;
+  background: linear-gradient(to top, #4CAF50, #8BC34A);
+  transition: width 0.5s ease-in-out;
+  border-radius: 0 0 12px 12px;
 }

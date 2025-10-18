@@ -22,6 +22,10 @@ export class HeaderComponent implements OnInit {
     this.isMenuOpen.set(false);
   }
 
+  navigateToServices(): void {
+    this.router.navigate(['/services']);
+  }
+
   @HostListener('window:scroll')
   onWindowScroll(): void {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;

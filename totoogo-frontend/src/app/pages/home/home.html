@@ -1,26 +1,26 @@
-<!-- Hero Section with Battery Animation -->
-<section class="relative min-h-screen bg-gradient-to-br from-gray-50 to-white overflow-hidden">
+    <!-- Hero Section with Battery Animation -->
+    <section class="relative min-h-screen bg-gradient-to-br from-gray-50 to-white overflow-hidden py-20">
   <!-- Background Pattern -->
   <div class="absolute inset-0 opacity-5">
     <div class="absolute inset-0 bg-gradient-to-br from-green-100 to-green-200"></div>
   </div>
 
-  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <!-- Content -->
       <div class="text-center lg:text-left">
-        <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-          India's Smartest
+        <h1 class="hero-title text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          Bangladesh's Smartest
           <span class="text-green-600">Battery-as-a-Service</span>
           Platform
         </h1>
-        <p class="text-xl text-gray-600 mb-8 max-w-2xl">
-          Revolutionizing electric vehicle charging infrastructure with intelligent battery swapping technology. 
-          Join the future of sustainable mobility.
+        <p class="hero-subtitle text-xl text-gray-600 mb-8 max-w-2xl">
+          Revolutionizing electric vehicle charging infrastructure across Bangladesh with intelligent battery swapping technology. 
+          Join the future of sustainable mobility in Bangladesh.
         </p>
         
         <!-- CTA Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+        <div class="hero-buttons flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
           <a routerLink="/contact" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
             Join Waitlist
           </a>
@@ -64,7 +64,7 @@
 </section>
 
 <!-- Solutions Overview -->
-<section class="py-20 bg-white">
+<section class="py-20 bg-white fade-in-section">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -75,69 +75,162 @@
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 solution-cards-container">
       <!-- Fleet Operators -->
-      <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-        <div class="w-16 h-16 bg-green-500 rounded-xl flex items-center justify-center mb-6">
-          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-          </svg>
+      <div class="solution-card group">
+        <div class="solution-card-header">
+          <div class="solution-icon">
+            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+          <div class="solution-image">
+            <div class="animated-fleet-icon">
+              <svg class="w-16 h-16 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 7h-8v6h8V7zm-2 4h-4V9h4v2zm4-12H3C1.9 1 1 1.9 1 3v18c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zM5 19H3v-2h2v2zm0-4H3v-2h2v2zm0-4H3V9h2v2zm0-4H3V5h2v2zm4 12H7v-2h2v2zm0-4H7v-2h2v2zm0-4H7V9h2v2zm0-4H7V5h2v2zm10 12h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2z"/>
+              </svg>
+            </div>
+          </div>
         </div>
-        <h3 class="text-2xl font-bold text-gray-900 mb-4">Fleet Operators</h3>
-        <p class="text-gray-600 mb-6">
-          Optimize your fleet operations with our intelligent battery swapping network. 
-          Reduce downtime and maximize efficiency.
-        </p>
-        <a routerLink="/services" class="text-green-600 font-semibold hover:text-green-700 transition-colors duration-200">
-          Learn More →
-        </a>
+        <div class="solution-content">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Fleet Operators</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Optimize your fleet operations with our intelligent battery swapping network. 
+            Reduce downtime, maximize efficiency, and lower operational costs.
+          </p>
+          <div class="solution-features">
+            <div class="feature-item">
+              <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>Real-time monitoring</span>
+            </div>
+            <div class="feature-item">
+              <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>Route optimization</span>
+            </div>
+            <div class="feature-item">
+              <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>Predictive maintenance</span>
+            </div>
+          </div>
+          <a routerLink="/services" class="solution-cta">
+            Learn More →
+          </a>
+        </div>
       </div>
 
       <!-- EV Drivers -->
-      <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-        <div class="w-16 h-16 bg-blue-500 rounded-xl flex items-center justify-center mb-6">
-          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-          </svg>
+      <div class="solution-card group">
+        <div class="solution-card-header">
+          <div class="solution-icon">
+            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+          </div>
+          <div class="solution-image">
+            <div class="animated-driver-icon">
+              <svg class="w-16 h-16 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </div>
+          </div>
         </div>
-        <h3 class="text-2xl font-bold text-gray-900 mb-4">EV Drivers</h3>
-        <p class="text-gray-600 mb-6">
-          Experience seamless battery swapping in under 3 minutes. 
-          No more waiting for charging - just swap and go.
-        </p>
-        <a routerLink="/services" class="text-blue-600 font-semibold hover:text-blue-700 transition-colors duration-200">
-          Learn More →
-        </a>
+        <div class="solution-content">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">EV Drivers</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Experience seamless battery swapping in under 3 minutes. 
+            No more waiting for charging - just swap and go with our nationwide network.
+          </p>
+          <div class="solution-features">
+            <div class="feature-item">
+              <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>3-minute swap</span>
+            </div>
+            <div class="feature-item">
+              <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>Mobile app</span>
+            </div>
+            <div class="feature-item">
+              <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>24/7 availability</span>
+            </div>
+          </div>
+          <a routerLink="/services" class="solution-cta">
+            Learn More →
+          </a>
+        </div>
       </div>
-
+              
       <!-- Franchise Partners -->
-      <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-        <div class="w-16 h-16 bg-purple-500 rounded-xl flex items-center justify-center mb-6">
-          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-          </svg>
+      <div class="solution-card group">
+        <div class="solution-card-header">
+          <div class="solution-icon">
+            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div class="solution-image">
+            <div class="animated-partner-icon">
+              <svg class="w-16 h-16 text-purple-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
+          </div>
         </div>
-        <h3 class="text-2xl font-bold text-gray-900 mb-4">Franchise Partners</h3>
-        <p class="text-gray-600 mb-6">
-          Join our network and become a part of India's largest battery swapping infrastructure. 
-          Lucrative business opportunities await.
-        </p>
-        <a routerLink="/services" class="text-purple-600 font-semibold hover:text-purple-700 transition-colors duration-200">
-          Learn More →
-        </a>
+        <div class="solution-content">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Franchise Partners</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Join our network and become a part of Bangladesh's largest battery swapping infrastructure. 
+            Lucrative business opportunities await with comprehensive support.
+          </p>
+          <div class="solution-features">
+            <div class="feature-item">
+              <svg class="w-5 h-5 text-purple-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>Proven model</span>
+            </div>
+            <div class="feature-item">
+              <svg class="w-5 h-5 text-purple-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>Complete support</span>
+            </div>
+            <div class="feature-item">
+              <svg class="w-5 h-5 text-purple-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>Training included</span>
+            </div>
+          </div>
+          <a routerLink="/services" class="solution-cta">
+            Learn More →
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Waitlist Section -->
-<section class="py-20 bg-gradient-to-br from-green-500 to-green-600">
+<section class="py-20 bg-gradient-to-br from-green-500 to-green-600 fade-in-section">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
     <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
       Join the Future of Electric Mobility
     </h2>
     <p class="text-xl text-green-100 mb-8">
-      Be among the first to experience India's most advanced battery swapping network
+      Be among the first to experience Bangladesh's most advanced battery swapping network
     </p>
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
@@ -163,7 +256,7 @@
 </section>
 
 <!-- Investor Section -->
-<section class="py-20 bg-gray-900 text-white">
+<section class="py-20 bg-gray-900 text-white fade-in-section">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div>
@@ -171,7 +264,7 @@
           Investment Opportunity
         </h2>
         <p class="text-xl text-gray-300 mb-8">
-          Join us in revolutionizing India's electric vehicle infrastructure. 
+          Join us in revolutionizing Bangladesh's electric vehicle infrastructure. 
           We're seeking strategic investors to accelerate our growth and expand our network.
         </p>
         
@@ -186,7 +279,7 @@
             <svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
-            <span class="text-gray-300">Massive market opportunity in India</span>
+            <span class="text-gray-300">Massive market opportunity in Bangladesh</span>
           </div>
           <div class="flex items-center space-x-3">
             <svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
@@ -214,7 +307,7 @@
           </div>
           <div class="flex justify-between items-center">
             <span class="text-gray-300">Network</span>
-            <span class="text-green-400 font-semibold">Pan-India</span>
+            <span class="text-green-400 font-semibold">Bangladesh</span>
           </div>
           <div class="flex justify-between items-center">
             <span class="text-gray-300">Partnerships</span>
@@ -226,49 +319,196 @@
   </div>
 </section>
 
-<!-- Partner Section -->
-<section class="py-20 bg-white">
+<!-- Strategic Partnerships Section -->
+<section class="py-24 bg-gradient-to-br from-gray-50 to-white fade-in-section">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-        Partner with Industry Leaders
+    <div class="text-center mb-20">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+        Strategic <span class="text-green-600">Partnerships</span>
       </h2>
-      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-        We're building strategic partnerships with EV manufacturers, fleet operators, and technology providers
+      <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+        Building the future of electric mobility through strategic alliances with industry leaders,
+        technology innovators, and infrastructure partners across Bangladesh and South Asia.
       </p>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-      <div class="text-center">
-        <div class="w-24 h-24 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-          <span class="text-2xl font-bold text-gray-600">EV</span>
+    <!-- Partnership Categories -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+      <!-- EV Manufacturers -->
+      <div class="partnership-card group">
+        <div class="partnership-icon">
+          <svg class="w-12 h-12 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
         </div>
-        <p class="text-gray-600 font-medium">EV Manufacturers</p>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">EV Manufacturers</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">
+          Collaborating with leading electric vehicle manufacturers to integrate our battery swapping technology into next-generation EVs.
+        </p>
+        <div class="mt-4">
+          <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">
+            Active Partnerships
+          </span>
+        </div>
       </div>
-      <div class="text-center">
-        <div class="w-24 h-24 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-          <span class="text-2xl font-bold text-gray-600">Fleet</span>
+
+      <!-- Fleet Operators -->
+      <div class="partnership-card group">
+        <div class="partnership-icon">
+          <svg class="w-12 h-12 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+          </svg>
         </div>
-        <p class="text-gray-600 font-medium">Fleet Operators</p>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Fleet Operators</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">
+          Partnering with major fleet operators to deploy our battery swapping infrastructure across commercial vehicle networks.
+        </p>
+        <div class="mt-4">
+          <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">
+            Pilot Programs
+          </span>
+        </div>
       </div>
-      <div class="text-center">
-        <div class="w-24 h-24 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-          <span class="text-2xl font-bold text-gray-600">Tech</span>
+
+      <!-- Technology Partners -->
+      <div class="partnership-card group">
+        <div class="partnership-icon">
+          <svg class="w-12 h-12 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
         </div>
-        <p class="text-gray-600 font-medium">Tech Partners</p>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Tech Innovators</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">
+          Working with cutting-edge technology companies to advance AI, IoT, and smart grid solutions for battery management.
+        </p>
+        <div class="mt-4">
+          <span class="inline-block bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full">
+            R&D Collaboration
+          </span>
+        </div>
       </div>
-      <div class="text-center">
-        <div class="w-24 h-24 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-          <span class="text-2xl font-bold text-gray-600">Gov</span>
+
+      <!-- Government & Policy -->
+      <div class="partnership-card group">
+        <div class="partnership-icon">
+          <svg class="w-12 h-12 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
         </div>
-        <p class="text-gray-600 font-medium">Government</p>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Policy Makers</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">
+          Collaborating with government agencies to shape policies and regulations that support sustainable transportation.
+        </p>
+        <div class="mt-4">
+          <span class="inline-block bg-orange-100 text-orange-800 text-xs font-semibold px-3 py-1 rounded-full">
+            Policy Advisory
+          </span>
+        </div>
       </div>
     </div>
 
-    <div class="text-center mt-12">
-      <a routerLink="/contact" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-        Become a Partner
-      </a>
+    <!-- Charging Battery Animation Section -->
+    <div class="bg-gradient-to-r from-green-500 to-green-600 rounded-3xl p-12 text-white relative overflow-hidden">
+      <div class="absolute inset-0 bg-black/10"></div>
+      <div class="relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <!-- Content -->
+          <div>
+            <h3 class="text-3xl md:text-4xl font-bold mb-6">
+              Powering the Future Together
+            </h3>
+            <p class="text-xl text-green-100 mb-8 leading-relaxed">
+              Our partnerships are accelerating the transition to sustainable transportation.
+              Join us in building Bangladesh's most advanced battery swapping network.
+            </p>
+
+            <div class="grid grid-cols-2 gap-6 mb-8">
+              <div class="text-center">
+                <div class="text-3xl font-bold text-white mb-2">50+</div>
+                <div class="text-green-100 text-sm">Strategic Partners</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl font-bold text-white mb-2">100+</div>
+                <div class="text-green-100 text-sm">Cities Covered</div>
+              </div>
+            </div>
+
+            <a routerLink="/contact" class="bg-white text-green-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+              Explore Partnership Opportunities
+            </a>
+          </div>
+
+          <!-- Animated Battery Charging -->
+          <div class="charging-animation-container">
+            <div class="charging-battery">
+              <div class="battery-body">
+                <div class="battery-level" [style.height.%]="chargingLevel()"></div>
+                <div class="charging-indicator" [class.active]="isCharging()"></div>
+              </div>
+              <div class="battery-terminal"></div>
+            </div>
+
+            <!-- Charging Elements -->
+            <div class="charging-element element-1">
+              <svg class="w-6 h-6 text-green-300" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+            </div>
+            <div class="charging-element element-2">
+              <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+            </div>
+            <div class="charging-element element-3">
+              <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Partnership Benefits -->
+    <div class="mt-20">
+      <h3 class="text-3xl font-bold text-gray-900 text-center mb-12">
+        Why Partner with Totoogo?
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+          <h4 class="text-xl font-bold text-gray-900 mb-4">Proven Technology</h4>
+          <p class="text-gray-600">
+            Our battery swapping technology is already deployed and tested in real-world conditions.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+          </div>
+          <h4 class="text-xl font-bold text-gray-900 mb-4">Market Leadership</h4>
+          <p class="text-gray-600">
+            Be part of Bangladesh's first and largest battery swapping network.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h4 class="text-xl font-bold text-gray-900 mb-4">Sustainable Impact</h4>
+          <p class="text-gray-600">
+            Contribute to reducing carbon emissions and building a greener future.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>

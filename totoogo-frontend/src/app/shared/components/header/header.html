@@ -1,14 +1,12 @@
-<header class="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg transition-all duration-300" [class.bg-white/95]="isScrolled()" [class.backdrop-blur-md]="isScrolled()">
+<header class="sticky top-0 left-0 right-0 z-50 bg-white shadow-lg transition-all duration-300" [class.bg-white/95]="isScrolled()" [class.backdrop-blur-md]="isScrolled()">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
+    <div class="flex items-center justify-between h-20">
       <!-- Logo -->
       <div class="flex items-center">
         <a routerLink="/" class="flex items-center space-x-3 group">
-          <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
-            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
-            </svg>
-          </div>
+              <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
+                <i class="fas fa-battery-three-quarters text-white text-xl"></i>
+              </div>
           <div class="flex flex-col">
             <span class="text-xl font-bold text-gray-900">Totoogo</span>
             <span class="text-xs text-green-600 font-medium">Battery Solutions</span>
@@ -18,7 +16,31 @@
 
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center space-x-8">
-        <a routerLink="/services" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-200">Our Offerings</a>
+        <!-- Our Offerings Dropdown -->
+        <div class="relative group">
+          <button (click)="navigateToServices()" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-200 flex items-center space-x-1">
+            <span>Our Offerings</span>
+            <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+            <div class="py-2">
+              <a routerLink="/services" class="block px-4 py-3 text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors duration-200">
+                <div class="font-semibold">Fleet Operators</div>
+                <div class="text-sm text-gray-500">Battery solutions for fleet management</div>
+              </a>
+              <a routerLink="/services" class="block px-4 py-3 text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors duration-200">
+                <div class="font-semibold">EV Drivers</div>
+                <div class="text-sm text-gray-500">Individual battery swapping services</div>
+              </a>
+              <a routerLink="/services" class="block px-4 py-3 text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors duration-200">
+                <div class="font-semibold">Franchise Partners</div>
+                <div class="text-sm text-gray-500">Join our network as a partner</div>
+              </a>
+            </div>
+          </div>
+        </div>
         <a routerLink="/about" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-200">About Us</a>
         <a routerLink="/contact" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-200">Contact Us</a>
       </nav>

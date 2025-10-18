@@ -130,6 +130,244 @@
   }
 }
 
+// Solution Cards
+.solution-card {
+  @apply bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-100 relative overflow-hidden;
+  opacity: 1;
+  transform: translateY(0);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #22c55e, #16a34a);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .solution-card-header {
+    @apply flex items-center justify-between mb-6;
+  }
+  
+  .solution-icon {
+    @apply w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center shadow-lg;
+  }
+  
+  .solution-image {
+    @apply relative;
+    
+    .animated-fleet-icon,
+    .animated-driver-icon,
+    .animated-partner-icon {
+      animation: float-gentle 3s ease-in-out infinite;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    }
+    
+    .animated-fleet-icon {
+      animation-delay: 0s;
+    }
+    
+    .animated-driver-icon {
+      animation-delay: 1s;
+    }
+    
+    .animated-partner-icon {
+      animation-delay: 2s;
+    }
+  }
+  
+  .solution-content {
+    @apply space-y-4;
+  }
+  
+  .solution-features {
+    @apply space-y-3;
+    
+    .feature-item {
+      @apply flex items-center space-x-3 text-sm font-medium text-gray-600;
+      
+      svg {
+        @apply flex-shrink-0;
+      }
+    }
+  }
+  
+  .solution-cta {
+    @apply inline-flex items-center text-green-600 font-semibold hover:text-green-700 transition-colors duration-200 text-sm;
+  }
+  
+  &:hover {
+    .solution-icon {
+      @apply shadow-xl transform scale-105;
+    }
+    
+    .animated-fleet-icon,
+    .animated-driver-icon,
+    .animated-partner-icon {
+      animation-duration: 1.5s;
+    }
+  }
+}
+
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+    opacity: 1;
+  }
+}
+
+// Partnership Cards
+.partnership-card {
+  @apply bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100;
+  opacity: 1;
+  transform: translateY(0);
+  
+  .partnership-icon {
+    @apply w-16 h-16 bg-gray-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-50 transition-colors duration-300;
+  }
+  
+  &:hover {
+    .partnership-icon {
+      @apply bg-green-50;
+    }
+  }
+}
+
+// Charging Battery Animation
+.charging-animation-container {
+  position: relative;
+  width: 200px;
+  height: 250px;
+  margin: 0 auto;
+}
+
+.charging-battery {
+  position: relative;
+  width: 120px;
+  height: 200px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.battery-body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+}
+
+.battery-level {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, #10b981, #34d399, #6ee7b7);
+  transition: height 0.8s ease-in-out;
+  border-radius: 0 0 8px 8px;
+  animation: charging-pulse 2s ease-in-out infinite;
+}
+
+.battery-terminal {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.charging-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  
+  &.active {
+    opacity: 1;
+    animation: charging-flash 1.5s ease-in-out infinite;
+  }
+}
+
+// Charging Elements Animation
+.charging-element {
+  position: absolute;
+  animation: charging-float 3s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+.element-1 {
+  top: 15%;
+  left: 5%;
+  animation-delay: 0s;
+}
+
+.element-2 {
+  top: 45%;
+  right: 10%;
+  animation-delay: 1s;
+}
+
+.element-3 {
+  bottom: 25%;
+  left: 15%;
+  animation-delay: 2s;
+}
+
+// Keyframe Animations
+@keyframes charging-pulse {
+  0%, 100% {
+    box-shadow: inset 0 0 20px rgba(16, 185, 129, 0.3);
+  }
+  50% {
+    box-shadow: inset 0 0 30px rgba(16, 185, 129, 0.6);
+  }
+}
+
+@keyframes charging-flash {
+  0%, 100% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+@keyframes charging-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-15px) rotate(10deg);
+    opacity: 1;
+  }
+}
+
 // Responsive adjustments
 @media (max-width: 768px) {
   .battery-animation-container {
@@ -143,6 +381,20 @@
   }
   
   .floating-element {
+    display: none; // Hide on mobile for better performance
+  }
+  
+  .charging-animation-container {
+    width: 150px;
+    height: 200px;
+  }
+  
+  .charging-battery {
+    width: 80px;
+    height: 150px;
+  }
+  
+  .charging-element {
     display: none; // Hide on mobile for better performance
   }
 }

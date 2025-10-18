@@ -1,5 +1,5 @@
 <!-- Hero Section -->
-<section class="bg-gradient-to-br from-green-50 to-white py-20">
+<section class="bg-gradient-to-br from-green-50 to-white py-24">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center">
       <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
@@ -13,7 +13,7 @@
 </section>
 
 <!-- Mission Section -->
-<section class="py-20 bg-white">
+<section class="py-20 bg-white fade-in-section">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div>
@@ -21,7 +21,7 @@
           Our Mission
         </h2>
         <p class="text-lg text-gray-600 mb-6">
-          To accelerate India's transition to electric mobility by providing seamless, 
+          To accelerate Bangladesh's transition to electric mobility by providing seamless, 
           efficient, and sustainable battery swapping infrastructure that eliminates 
           range anxiety and charging time concerns.
         </p>
@@ -47,7 +47,7 @@
           </div>
           <h3 class="text-2xl font-bold text-gray-900 mb-4">Vision 2030</h3>
           <p class="text-gray-700">
-            To become India's largest battery swapping network, 
+            To become Bangladesh's largest battery swapping network, 
             powering 1 million EVs across 100+ cities
           </p>
         </div>
@@ -57,7 +57,7 @@
 </section>
 
 <!-- Values Section -->
-<section class="py-20 bg-gray-50">
+    <section class="py-20 bg-gray-50 fade-in-section">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -68,96 +68,132 @@
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 values-cards-container">
       <!-- Innovation -->
-      <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-        <div class="w-16 h-16 bg-blue-500 rounded-xl flex items-center justify-center mb-6">
-          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-          </svg>
+      <div class="value-card group">
+        <div class="value-card-header">
+          <div class="value-image">
+            <div class="animated-innovation-icon">
+              <svg class="w-16 h-16 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
+          </div>
         </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-4">Innovation</h3>
-        <p class="text-gray-600">
-          Continuously pushing the boundaries of battery technology and 
-          infrastructure to deliver cutting-edge solutions.
-        </p>
+        <div class="value-content">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Innovation</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Continuously pushing the boundaries of battery technology and 
+            infrastructure to deliver cutting-edge solutions.
+          </p>
+        </div>
       </div>
 
       <!-- Sustainability -->
-      <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-        <div class="w-16 h-16 bg-green-500 rounded-xl flex items-center justify-center mb-6">
-          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-          </svg>
+      <div class="value-card group">
+        <div class="value-card-header">
+          <div class="value-image">
+            <div class="animated-sustainability-icon">
+              <svg class="w-16 h-16 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </div>
+          </div>
         </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-4">Sustainability</h3>
-        <p class="text-gray-600">
-          Committed to reducing carbon footprint and promoting 
-          clean energy solutions for a greener future.
-        </p>
+        <div class="value-content">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Sustainability</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Committed to reducing carbon footprint and promoting 
+            clean energy solutions for a greener future.
+          </p>
+        </div>
       </div>
 
       <!-- Reliability -->
-      <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-        <div class="w-16 h-16 bg-purple-500 rounded-xl flex items-center justify-center mb-6">
-          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-          </svg>
+      <div class="value-card group">
+        <div class="value-card-header">
+          <div class="value-image">
+            <div class="animated-reliability-icon">
+              <svg class="w-16 h-16 text-purple-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+          </div>
         </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-4">Reliability</h3>
-        <p class="text-gray-600">
-          Ensuring 99.9% uptime and consistent service delivery 
-          to keep your vehicles running smoothly.
-        </p>
+        <div class="value-content">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Reliability</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Ensuring 99.9% uptime and consistent service delivery 
+            to keep your vehicles running smoothly.
+          </p>
+        </div>
       </div>
 
       <!-- Accessibility -->
-      <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-        <div class="w-16 h-16 bg-orange-500 rounded-xl flex items-center justify-center mb-6">
-          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-          </svg>
+      <div class="value-card group">
+        <div class="value-card-header">
+          <div class="value-image">
+            <div class="animated-accessibility-icon">
+              <svg class="w-16 h-16 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
+          </div>
         </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-4">Accessibility</h3>
-        <p class="text-gray-600">
-          Making EV charging accessible to everyone, everywhere, 
-          regardless of location or economic status.
-        </p>
+        <div class="value-content">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Accessibility</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Making EV charging accessible to everyone, everywhere, 
+            regardless of location or economic status.
+          </p>
+        </div>
       </div>
 
       <!-- Partnership -->
-      <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-        <div class="w-16 h-16 bg-red-500 rounded-xl flex items-center justify-center mb-6">
-          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-          </svg>
+      <div class="value-card group">
+        <div class="value-card-header">
+          <div class="value-image">
+            <div class="animated-partnership-icon">
+              <svg class="w-16 h-16 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </div>
+          </div>
         </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-4">Partnership</h3>
-        <p class="text-gray-600">
-          Building strong relationships with stakeholders to 
-          create a collaborative ecosystem for EV adoption.
-        </p>
+        <div class="value-content">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Partnership</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Building strong relationships with stakeholders to 
+            create a collaborative ecosystem for EV adoption.
+          </p>
+        </div>
       </div>
 
       <!-- Excellence -->
-      <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-        <div class="w-16 h-16 bg-indigo-500 rounded-xl flex items-center justify-center mb-6">
-          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-          </svg>
+      <div class="value-card group">
+        <div class="value-card-header">
+          <div class="value-image">
+            <div class="animated-excellence-icon">
+              <svg class="w-16 h-16 text-indigo-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+          </div>
         </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-4">Excellence</h3>
-        <p class="text-gray-600">
-          Maintaining the highest standards of quality and 
-          service delivery in everything we do.
-        </p>
+        <div class="value-content">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Excellence</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Maintaining the highest standards of quality and 
+            service delivery in everything we do.
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Team Section -->
-<section class="py-20 bg-white">
+<section class="py-20 bg-white fade-in-section">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -212,7 +248,7 @@
 </section>
 
 <!-- Stats Section -->
-<section class="py-20 bg-gradient-to-br from-green-500 to-green-600">
+<section class="py-20 bg-gradient-to-br from-green-500 to-green-600 fade-in-section">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
       <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -245,13 +281,13 @@
 </section>
 
 <!-- CTA Section -->
-<section class="py-20 bg-white">
+<section class="py-20 bg-white fade-in-section">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
     <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
       Ready to Join the Revolution?
     </h2>
     <p class="text-xl text-gray-600 mb-8">
-      Be part of India's electric mobility transformation
+      Be part of Bangladesh's electric mobility transformation
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
       <a routerLink="/contact" class="bg-green-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-600 transition-colors duration-200">
